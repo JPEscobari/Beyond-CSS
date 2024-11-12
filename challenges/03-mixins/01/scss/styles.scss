@@ -1,11 +1,71 @@
+@mixin linearGradient($angle, $color1, $color2) {
+  background: linear-gradient($angle, $color1, $color2);
+}
+
+@mixin pseudo-underline($width, $height, $background-color, $margin) {
+  &::after {
+    content: "";
+    display: block;
+    width: $width;
+    height: $height;
+    background-color: $background-color;
+    margin: $margin;
+  }
+}
+
+@mixin ui-element($size, $color, $bg-color, $hover-color, $hover-bg-color) {
+  font-size: $size;
+  color: $color;
+  background-color: $bg-color;
+  padding: ($size * 0.3) ($size * (1));
+  &:hover {
+    background-color: $hover-bg-color;
+    color: $hover-color;
+  } 
+}
+
 body {
   font-family: system-ui;
   margin: 0;
 }
 
-.section-one,
-.section-two,
+.section-one {
+  text-align: center;
+  padding: 10vh 0;
+  @include linearGradient(45deg, #ff0000, #0044ff);
+}
+
+.section-two
+ {
+  text-align: center;
+  padding: 10vh 0;
+  @include linearGradient(90deg, #00ff08, #c800ff);
+}
+
 .section-three {
   text-align: center;
   padding: 10vh 0;
+  @include linearGradient(10deg, #00fc08, #505800);
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #ffffff;
+  @include pseudo-underline(100%, 3px, #ffffff, 10px auto 0);
+}
+
+.button-one {
+  @include ui-element(1rem, #ffffff, #000000, #000000, #ffffff);
+}
+
+.button-two {
+  @include ui-element(1.5rem, #000000, #ffffff, #ffffff, #000000);
+}
+
+.badge-one {
+
+}
+
+.badge-two {
+
 }
